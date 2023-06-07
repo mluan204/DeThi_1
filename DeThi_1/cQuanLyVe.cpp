@@ -31,6 +31,7 @@ void cQuanLyVe::Nhap()
 		}
 		p->Nhap();
 		ds.push_back(p);
+		ds[i]->GiaVe();
 	}
 }
 
@@ -38,7 +39,6 @@ void cQuanLyVe::Xuat()
 {
 	for (int i = 0; i < ds.size(); i++)
 	{	
-		ds[i]->GiaVe();
 		ds[i]->Xuat();
 	}
 }
@@ -54,6 +54,55 @@ int cQuanLyVe::TongTienVeSV()
 	}
 	return TongTien;
 }
+
+void cQuanLyVe::VeThuongBanChayNhat()
+{
+	int loai[4] = { 0 };
+	for (int i = 0; i < ds.size(); i++)
+	{
+		if (ds[i]->getLoai() == 1)
+		{
+			int x = ds[i]->getgiave();
+			if (x == 10000)
+				loai[0]++;
+			else if (x == 15000)
+				loai[1]++;
+			else if (x == 20000)
+				loai[2]++;
+			else
+				loai[3]++;
+		}
+	}
+	int j = 0;
+	for (int i = 1; i < 4; i++)
+	{
+		if (loai[j] < loai[i])
+		{
+			j = i;
+		}
+	}
+
+	cout << "- Muc gia ve thuong duoc ban nhieu nhat: ";
+	switch (j)
+	{
+	case 0:
+		cout << 10000;
+		break;
+	case 1:
+		cout << 15000;
+		break;
+	case 2:
+		cout << 20000;
+		break;
+	case 3:
+		cout << 25000;
+		break;
+	default:
+		cout << "khong co !!";
+		break;
+	}
+}
+
 
 cVe* cQuanLyVe::Tim_VeThuong_GiaMax()
 {

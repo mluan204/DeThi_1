@@ -13,6 +13,7 @@ public:
 	void Nhap();
 	void Xuat();
 	int TongTienVeSV();
+	void VeThuongBanChayNhat();
 	cVe* Tim_VeThuong_GiaMax();
 };
 
